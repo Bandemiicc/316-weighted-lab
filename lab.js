@@ -109,15 +109,31 @@ const clickedLinks = menuLinks.find(link => link.text === event.target.textConte
 if (clickedLinks){
   if(clickedLinks.subLinks){
     subMenuEl.style.top ='100%'
+
+    subMenu(clickedLinks.subLinks);
   }
   else{
     subMenuEl.style.top = '0%'  
   }
+
+  
 }
 
 event.target.classList.add('active')
 });
 
+function subMenu (subLinks) {
+    subMenuEl.innerHTML = ''
+
+    subLinks.forEach(link => {
+        const newlink = document.createElement('a');
+        newLink.setAttribute('href', link.href)
+
+        newLink.textContent = link.text
+        subMenuEl.appendChild(newLink)
+
+    });
+    }
 
 
 
